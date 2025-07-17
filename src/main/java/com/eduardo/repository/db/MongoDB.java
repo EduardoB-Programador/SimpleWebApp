@@ -5,7 +5,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
 
-public class MongoDB extends GenericDB {
+public final class MongoDB extends GenericDB {
 	private MongoDB mongo;
 	private MongoClient client;
 	private MongoDatabase db;
@@ -20,4 +20,9 @@ public class MongoDB extends GenericDB {
 			mongo = new MongoDB(url, db);
 		return this.mongo;
 	}
+	
+	public static class MongoMethods {
+		
+	}
+	
 }
