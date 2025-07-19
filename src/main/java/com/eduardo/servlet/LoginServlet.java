@@ -10,9 +10,19 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		
+		try {
+			
+		} catch (RuntimeException e) {
+			
+		}
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
+		try {
+			
+		} catch (RuntimeException e) {
+			
+		}
 	}
 }

@@ -1,0 +1,38 @@
+#login-container {
+	margin: 10% auto;
+	padding: 15px;
+	width: 40%;
+	background: #d2d2d2;
+	display: block;
+	position: relative;
+}
+
+.inputs {
+	border-radius: 5px;
+	border: none;
+	width: 100%;
+	font-size: 15px;
+	background: #bebebe;
+	margin: 0 0 8px;
+}
+
+#submit {
+	margin: 8px 0;
+	border-radius: 5px;
+	border: none;
+	width: 100%;
+	background: #beffff;
+}
+
+#operation-title {
+	text-align: center;
+}
+
+#log-sign-in:link, #log-sign-in:visited {
+	text-decoration: underline;
+	color: black;
+}
+
+#log-sign-in:hover {
+	color: blue;
+}

@@ -4,9 +4,9 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
-
+@SuppressWarnings("all")
 public final class MongoDB extends GenericDB {
-	private MongoDB mongo;
+	private static MongoDB mongo;
 	private MongoClient client;
 	private MongoDatabase db;
 	
@@ -15,10 +15,10 @@ public final class MongoDB extends GenericDB {
 		this.db = client.getDatabase(db);
 	}
 	
-	public MongoDB getInstance(String url, String db) {
+	public static MongoDB getInstance(String url, String db) {
 		if (mongo == null)
 			mongo = new MongoDB(url, db);
-		return this.mongo;
+		return mongo;
 	}
 	
 	public static class MongoMethods {

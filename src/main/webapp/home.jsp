@@ -4,10 +4,9 @@
 	<head>
 		<%@page import = "static com.eduardo.util.StandardTags.*" %>
 		<%= HEAD_TAGS()%>
-		<link rel="stylesheet" href="./styles/login.css"/>
-		<title>Sign in</title>
+		<title>Home</title>
 	</head>
 	<body>
-		<%= LOGIN_CONTAINER("Sign In", "POST", "register", null) %>
+		
 	</body>
 </html>
