@@ -3,11 +3,12 @@
 <html>
 	<head>
 		<%@page import = "static com.eduardo.util.StandardTags.*" %>
+		<%! String msg = null; %>
 		<%= HEAD_TAGS()%>
 		<link rel="stylesheet" href="./styles/login.css"/>
 		<title>Log in</title>
 	</head>
 	<body>
-		<%= LOGIN_CONTAINER("Log In", "GET", "auth", null) %>
+		<%= LOGIN_CONTAINER("Log In", "GET", "auth", msg) %>
 	</body>
 </html>
