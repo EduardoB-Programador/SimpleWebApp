@@ -3,32 +3,45 @@ package com.eduardo.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.eduardo.model.User;
 import com.eduardo.repository.db.GenericDB;
 
-@SuppressWarnings("all")
-public class Repository {
-	private static Repository repo = null;
-	private List<User> data;
-	private GenericDB db;
+public abstract class Repository<T> {
+	protected static Repository<?> repo = null;
+	protected List<T> data;
+	protected GenericDB db;
+	protected List<MessageTypes> messages;
 	
-	public static Repository getInstance(GenericDB db) {
-		if (repo == null)
-			repo = new Repository(db);
-		return repo;
-	}
+	public static <T> Repository<T> getInstance(GenericDB db) {return null;}
 	
-	private Repository(GenericDB db) {
+	protected Repository(GenericDB db) {
 		this.data = new ArrayList<>();
 		this.db = db;
 	}
+
+	public abstract void add(T value);
 	
-	public void add(User value) {
+	public abstract List<?> fetch(T condition);
+	
+	public abstract void update(String condition, T value);
+	
+	public abstract void delete(String condition);
+	
+	public static enum MessageTypes {
+		ADD_ERROR_MESSAGE("Couldn't insert data."),
+		ADD_SUCCESSFUL_MESSAGE("Data was inserted successfully."),
+		FETCH_ERROR_MESSAGE("Couldn't fetch data."),
+		FETCH_SUCCESSFUL_MESSAGE("Data successfully fetched."),
+		UPDATE_ERROR_MESSAGE("Couldn't update any entry."),
+		UPDATE_SUCCESSFUL_MESSAGE("Data successfully updated."),
+		DELETE_ERROR_MESSAGE("Couldn't delete data."),
+		DELETE_SUCCESSFUL_MESSAGE("Data successfully deleted.");
 		
-	}
-	
-	public void delete(User value) {
+		private String status;
 		
+		private MessageTypes(String status) {
+			this.status = status;
+		}
+		
+		public String getStatus() {return this.status;}
 	}
-	
 }
