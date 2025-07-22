@@ -4,7 +4,7 @@ import static com.eduardo.util.AuthMethods.isNull;
 
 import java.util.Objects;
 
-public record Email(String email) {
+public record Email(String email) implements Mappifier {
 
 	public Email(String email) {
 		isNull(email);

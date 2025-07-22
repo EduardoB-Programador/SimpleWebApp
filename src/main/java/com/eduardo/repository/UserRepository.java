@@ -2,14 +2,19 @@ package com.eduardo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.bson.Document;
 
+import com.eduardo.model.Item;
+import com.eduardo.model.Mappifier;
 import com.eduardo.model.User;
 import com.eduardo.repository.db.GenericDB;
 
 @SuppressWarnings("all")
-public class UserRepository<T> extends Repository<T> implements Methods<T> {
+public class UserRepository<T extends Mappifier> extends Repository<T> {
 	
 	public static UserRepository<User> getInstance(GenericDB db) {
 		if (Repository.repo == null || Repository.repo.db != db)
@@ -29,8 +34,7 @@ public class UserRepository<T> extends Repository<T> implements Methods<T> {
 	}
 
 	@Override
-	public List<T> fetch(T condition) {
-		
+	public List<T> fetch(String condition) {
 		return Methods.listFormatter(db.read(condition));
 	}
 
@@ -50,9 +54,23 @@ public class UserRepository<T> extends Repository<T> implements Methods<T> {
 	
 }
 
-interface Methods<T> {
-	//TODO: create the method to format the type correctly the fetch
-	public static <T> List<T> listFormatter(List<Document> documents) {
-		return null;
+interface Methods {
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends Mappifier> List<T> listFormatter(List<Document> documents) {
+		List<T> users = new ArrayList<>();
+		
+		for (Document doc : documents) {
+			User u = new User(doc.getString("email"), doc.getString(users));
+			
+			List<Item> itemList = doc.getList("items", Item.class);
+			
+			u.setList(itemList);
+			users.add((T) u);
+		}
+		
+		return users;
 	}
 }
+
+

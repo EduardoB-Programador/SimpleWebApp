@@ -2,7 +2,7 @@ package com.eduardo.model;
 
 import static com.eduardo.util.AuthMethods.isNull;
 
-public final class Password {
+public final class Password implements Mappifier {
 	private int hashpass;
 	
 	public Password(String password) {

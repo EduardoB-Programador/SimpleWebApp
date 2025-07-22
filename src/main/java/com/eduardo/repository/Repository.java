@@ -3,15 +3,14 @@ package com.eduardo.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.eduardo.model.Mappifier;
 import com.eduardo.repository.db.GenericDB;
 
-public abstract class Repository<T> {
+public abstract class Repository<T extends Mappifier> {
 	protected static Repository<?> repo = null;
 	protected List<T> data;
 	protected GenericDB db;
 	protected List<MessageTypes> messages;
-	
-	public static <T> Repository<T> getInstance(GenericDB db) {return null;}
 	
 	protected Repository(GenericDB db) {
 		this.data = new ArrayList<>();
@@ -20,7 +19,7 @@ public abstract class Repository<T> {
 
 	public abstract void add(T value);
 	
-	public abstract List<?> fetch(T condition);
+	public abstract List<?> fetch(String condition);
 	
 	public abstract void update(String condition, T value);
 	

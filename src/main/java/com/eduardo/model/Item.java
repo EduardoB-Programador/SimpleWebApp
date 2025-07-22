@@ -4,7 +4,7 @@ import static com.eduardo.util.AuthMethods.isNull;
 
 import java.util.Objects;
 
-public final class Item {
+public final class Item implements Mappifier {
 	private String name;
 	private double value;
 	

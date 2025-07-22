@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public final class User {
+public final class User implements Mappifier {
 	private Password password;
 	private Email email;
 	private List<Item> items;
 	
-	public User(String email, String password) {
-		this.email = new Email(email);
-		this.password = new Password(password);
+	public User(Email email, Password password) {
+		this.email = email;
+		this.password = password;
 		this.items = new ArrayList<>();
+	}
+	
+	public User(String email, String password) {
+		this(new Email(email), new Password(password));
 	}
 
 	@Override
@@ -47,6 +51,10 @@ public final class User {
 	
 	public void removeItem(Item item) {
 		items.remove(item);
+	}
+	
+	public void setList(List<Item> items) {
+		this.items = items;
 	}
 	
 }
