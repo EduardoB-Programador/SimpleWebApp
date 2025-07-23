@@ -8,11 +8,8 @@ import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
+import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 @SuppressWarnings("all")
@@ -26,8 +23,9 @@ public final class MongoDB extends GenericDB {
 	private MongoCollection<Document> collection;
 	
 	private MongoDB(String url, String db, String collectionName) {
+		
 		if (url != null) {
-			client = MongoClients.create(url);
+			client = Methods.createClient(url);
 			this.urlStr = url;
 		}
 			
@@ -68,7 +66,7 @@ public final class MongoDB extends GenericDB {
 	
 	public void setUrl(String url) {
 		if (url != null)
-			this.client = MongoClients.create(url);
+			this.client = Methods.createClient(url);
 	}
 	
 	public void setDatabase(String db) {
@@ -83,6 +81,14 @@ public final class MongoDB extends GenericDB {
 	
 	static class Methods {
 		private static Document doc = new Document();
+		
+		static MongoClient createClient(String url) {
+			try {
+				Class.forName("com.mongodb.MongoClient");
+			} catch (Exception e) {System.out.println("exception happened");}
+			
+			return new MongoClient(url);
+		}
 		
 		private static final void resetDoc() {doc = new Document();}
 		

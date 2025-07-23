@@ -1,6 +1,6 @@
 package com.eduardo.model;
 
-import static com.eduardo.util.AuthMethods.isNull;
+import static com.eduardo.model.util.AuthMethods.isNull;
 
 public final class Password implements Mappifier {
 	private int hashpass;

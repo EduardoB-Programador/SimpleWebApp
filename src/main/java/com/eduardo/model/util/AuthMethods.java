@@ -1,4 +1,4 @@
-package com.eduardo.util;
+package com.eduardo.model.util;
 
 import java.util.Collection;
 import java.util.Objects;

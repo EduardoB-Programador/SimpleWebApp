@@ -1,6 +1,6 @@
 package com.eduardo.model;
 
-import static com.eduardo.util.AuthMethods.isNull;
+import static com.eduardo.model.util.AuthMethods.isNull;
 
 import java.util.Objects;
 

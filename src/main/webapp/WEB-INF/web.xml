@@ -18,5 +18,27 @@
 		<servlet-name>signin</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<context-param>
+		<param-name>dbconnection</param-name>
+		<param-value>mongodb://localhost:27017/</param-value>
+	</context-param>
+	<context-param>
+		<param-name>db</param-name>
+		<param-value>simpleCrud</param-value>
+	</context-param>
+	<context-param>
+		<param-name>collection</param-name>
+		<param-value>users</param-value>
+	</context-param>
 
 </web-app>

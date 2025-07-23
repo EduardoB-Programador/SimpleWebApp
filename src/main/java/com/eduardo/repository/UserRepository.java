@@ -30,6 +30,7 @@ public class UserRepository<T extends Mappifier> extends Repository<T> {
 	public void add(T value) {
 		try {
 			db.create(value);
+			data.add(value);
 		} catch (Exception e) {messages.add(MessageTypes.ADD_ERROR_MESSAGE);}
 	}
 
@@ -61,7 +62,7 @@ interface Methods {
 		List<T> users = new ArrayList<>();
 		
 		for (Document doc : documents) {
-			User u = new User(doc.getString("email"), doc.getString(users));
+			User u = new User(doc.getString("email"), doc.getString("password"));
 			
 			List<Item> itemList = doc.getList("items", Item.class);
 			
