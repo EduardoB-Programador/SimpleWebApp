@@ -8,7 +8,6 @@ import com.eduardo.model.User;
 import com.eduardo.repository.Repository;
 import com.eduardo.repository.UserRepository;
 import com.eduardo.repository.db.GenericDB;
-import com.eduardo.repository.db.MongoDB;
 
 public class RepositoryMethods {
 

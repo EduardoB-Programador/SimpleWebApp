@@ -36,7 +36,7 @@ public class UserRepository<T extends Mappifier> extends Repository<T> {
 
 	@Override
 	public List<T> fetch(String condition) {
-		return Methods.listFormatter(db.read(condition));
+		return null;
 	}
 
 	@Override
@@ -58,19 +58,8 @@ public class UserRepository<T extends Mappifier> extends Repository<T> {
 interface Methods {
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends Mappifier> List<T> listFormatter(List<Document> documents) {
-		List<T> users = new ArrayList<>();
-		
-		for (Document doc : documents) {
-			User u = new User(doc.getString("email"), doc.getString("password"));
-			
-			List<Item> itemList = doc.getList("items", Item.class);
-			
-			u.setList(itemList);
-			users.add((T) u);
-		}
-		
-		return users;
+	public static <T extends Mappifier> List<T> listFormatter(List<Object> documents) {
+		return null;
 	}
 }
 

@@ -1,18 +1,8 @@
 package com.eduardo.repository.db;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
-import org.bson.BsonDocument;
-import org.bson.Document;
-import org.bson.conversions.Bson;
-
-import com.mongodb.*;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-
-@SuppressWarnings("all")
+//couldn't use MongoDB due to either dependency issues or IDE issues, I wasn't able to find out what happened and even less how to fix it, therefore this class was a waste of time, frustrating
+/*@SuppressWarnings("all")
 public final class MongoDB extends GenericDB {
 	private static MongoDB mongo;
 	private String urlStr;
@@ -173,3 +163,4 @@ public final class MongoDB extends GenericDB {
 	}
 	
 }
+*/

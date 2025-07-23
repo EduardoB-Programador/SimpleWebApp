@@ -2,8 +2,6 @@ package com.eduardo.repository.db;
 
 import java.util.List;
 
-import org.bson.Document;
-
 /**All databases within this project must extend this class, this is the only way that the broken Dependency Injection I made works, otherwise I'll cry.
  * 
  */
@@ -21,7 +19,7 @@ public abstract class GenericDB {
 	 * @param condition - a filter to be applied on entries on the database
 	 * @return a list of entries (or only an entry)
 	 */
-	public abstract List<Document> read(Object condition);
+	public abstract List<Object> read(Object condition);
 	
 	
 	/**One of the CRUD methods, updates an entry's data.
