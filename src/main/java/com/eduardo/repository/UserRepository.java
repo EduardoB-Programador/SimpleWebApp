@@ -7,12 +7,13 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.eduardo.model.Item;
-import com.eduardo.model.Mappifier;
 import com.eduardo.model.User;
+import com.eduardo.model.util.Mappifier;
+import com.eduardo.model.util.Table;
 import com.eduardo.repository.db.GenericDB;
 
 @SuppressWarnings("all")
-public class UserRepository<T extends Mappifier> extends Repository<T> {
+public class UserRepository<T extends Mappifier & Table> extends Repository<T> {
 	
 	public static UserRepository<User> getInstance(GenericDB db) {
 		if (Repository.repo == null || Repository.repo.db != db)
@@ -26,8 +27,10 @@ public class UserRepository<T extends Mappifier> extends Repository<T> {
 
 	@Override
 	public void add(T value) {
+		String table = value.getTableName();
+		
 		try {
-			db.create(value);
+			db.create();
 			data.add(value);
 		} catch (Exception e) {messages.add(MessageTypes.ADD_ERROR_MESSAGE);}
 	}

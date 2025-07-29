@@ -3,10 +3,11 @@ package com.eduardo.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.eduardo.model.Mappifier;
+import com.eduardo.model.util.Mappifier;
+import com.eduardo.model.util.Table;
 import com.eduardo.repository.db.GenericDB;
 
-public abstract class Repository<T extends Mappifier> {
+public abstract class Repository<T extends Mappifier & Table> {
 	protected static Repository<?> repo = null;
 	protected List<T> data;
 	protected GenericDB db;

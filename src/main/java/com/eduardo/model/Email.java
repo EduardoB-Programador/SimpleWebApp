@@ -5,6 +5,8 @@ import static com.eduardo.model.util.AuthMethods.isNull;
 import java.util.Map;
 import java.util.Objects;
 
+import com.eduardo.model.util.Mappifier;
+
 public record Email(String email) implements Mappifier {
 
 	public Email(String email) {
@@ -30,6 +32,10 @@ public record Email(String email) implements Mappifier {
 		if (obj == null || getClass() != obj.getClass())
 			return false;
 		return this.hashCode() == obj.hashCode();
+	}
+	
+	public String toString() {
+		return this.email;
 	}
 	
 	public Object fromMap(Map<String, Object> map) {

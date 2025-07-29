@@ -3,8 +3,8 @@ package com.eduardo.repository.util;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-import com.eduardo.model.Mappifier;
 import com.eduardo.model.User;
+import com.eduardo.model.util.Mappifier;
 import com.eduardo.repository.Repository;
 import com.eduardo.repository.UserRepository;
 import com.eduardo.repository.db.GenericDB;

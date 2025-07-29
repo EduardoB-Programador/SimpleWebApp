@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public final class Item implements Mappifier {
+import com.eduardo.model.util.Mappifier;
+import com.eduardo.model.util.Table;
+
+public final class Item implements Mappifier, Table {
 	private String name;
 	private double value;
 	

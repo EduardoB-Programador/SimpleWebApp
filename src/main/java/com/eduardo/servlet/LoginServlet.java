@@ -2,6 +2,8 @@ package com.eduardo.servlet;
 
 import static com.eduardo.model.util.ModelMethods.*;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,13 +17,16 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+		User u = new User("user@gmail.com", "aaaa");
 		try {
-			Repository<User> repo = RepositoryMethods.getRepository(request, getServletContext());
-		} catch (Exception e) {System.out.println(e);}
-		
-		User u = createUser(request);
-		//repo.add(u);
-		
+			Map<String, Object> map = u.toMap();
+			System.out.println(map);
+			System.out.println(u.getTableName());
+			System.out.println(u.getTableColumns());
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {

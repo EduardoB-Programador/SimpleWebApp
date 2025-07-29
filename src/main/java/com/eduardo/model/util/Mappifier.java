@@ -1,4 +1,4 @@
-package com.eduardo.model;
+package com.eduardo.model.util;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -22,7 +22,12 @@ public interface Mappifier {
 			list.add(e);
 		}
 		
-		return Map.ofEntries((Entry<String, Object>[]) list.toArray());
+		Entry<String, Object>[] entries = new Entry[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			entries[i] = list.get(i);
+		}
+		
+		return Map.ofEntries(entries);
 	}
 	
 	private static Entry<String, Object> createEntry(Field f, Object o) throws IllegalArgumentException, IllegalAccessException {
