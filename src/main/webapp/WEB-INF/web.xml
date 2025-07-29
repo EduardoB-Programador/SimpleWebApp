@@ -30,15 +30,15 @@
 	
 	<context-param>
 		<param-name>dbconnection</param-name>
-		<param-value>mongodb://localhost:27017/</param-value>
+		<param-value>jdbc:postgresql://localhost:5432/</param-value>
 	</context-param>
 	<context-param>
-		<param-name>db</param-name>
-		<param-value>simpleCrud</param-value>
+		<param-name>username</param-name>
+		<param-value>postgres</param-value>
 	</context-param>
 	<context-param>
-		<param-name>collection</param-name>
-		<param-value>users</param-value>
+		<param-name>password</param-name>
+		<param-value>|-19-17-12-|Na</param-value>
 	</context-param>
 
 </web-app>

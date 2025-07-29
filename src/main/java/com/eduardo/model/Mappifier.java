@@ -32,4 +32,6 @@ public interface Mappifier {
 		
 		return Map.entry(name, obj);
 	}
+	
+	public Object fromMap(Map<String, Object> map);
 }

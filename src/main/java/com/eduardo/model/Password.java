@@ -2,6 +2,8 @@ package com.eduardo.model;
 
 import static com.eduardo.model.util.AuthMethods.isNull;
 
+import java.util.Map;
+
 public final class Password implements Mappifier {
 	private int hashpass;
 	
@@ -27,5 +29,11 @@ public final class Password implements Mappifier {
 	
 	public int getHashPass() {
 		return this.hashpass;
+	}
+	
+	public Object fromMap(Map<String, Object> map) {
+		if (!map.containsKey("password"))
+			return null;
+		return new Password((String) map.get("password"));
 	}
 }

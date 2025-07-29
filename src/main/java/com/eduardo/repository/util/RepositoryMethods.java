@@ -8,6 +8,7 @@ import com.eduardo.model.User;
 import com.eduardo.repository.Repository;
 import com.eduardo.repository.UserRepository;
 import com.eduardo.repository.db.GenericDB;
+import com.eduardo.repository.db.PostgreDB;
 
 public class RepositoryMethods {
 
@@ -17,11 +18,11 @@ public class RepositoryMethods {
 		
 		if (request.getSession().getAttribute("repository") == null) {
 			String connection = ctx.getInitParameter("dbconnection");
-			String db = ctx.getInitParameter("db");
-			String collection = ctx.getInitParameter("collection");
+			String user = ctx.getInitParameter("username");
+			String password = ctx.getInitParameter("password");
 			
-			GenericDB mongo = MongoDB.getInstance(connection, db, collection);
-			repo = UserRepository.getInstance(mongo);
+			GenericDB db = PostgreDB.getInstance(connection, user, password);
+			repo = UserRepository.getInstance(db);
 			
 			request.getSession().setAttribute("repository", repo);
 			return (Repository<T>) repo;

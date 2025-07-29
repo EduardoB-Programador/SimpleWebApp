@@ -2,6 +2,8 @@ package com.eduardo.model;
 
 import static com.eduardo.model.util.AuthMethods.isNull;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public final class Item implements Mappifier {
@@ -38,5 +40,17 @@ public final class Item implements Mappifier {
 		return this.value;
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Object fromMap(Map<String, Object> map) {
+		boolean containsItems = map.containsKey("items");
+		boolean containsItem = map.containsKey("item");
+		
+		if (!(containsItems || containsItem))
+			return null;
+		
+		if (containsItems) 
+			return (List<Item>) map.get("Items");
+		return (Item) map.get("item");
+	}
 }

@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.bson.Document;
-
 import com.eduardo.model.Item;
 import com.eduardo.model.Mappifier;
 import com.eduardo.model.User;
@@ -57,7 +55,7 @@ public class UserRepository<T extends Mappifier> extends Repository<T> {
 
 interface Methods {
 	
-	@SuppressWarnings("unchecked")
+	//@SuppressWarnings("unchecked")
 	public static <T extends Mappifier> List<T> listFormatter(List<Object> documents) {
 		return null;
 	}
