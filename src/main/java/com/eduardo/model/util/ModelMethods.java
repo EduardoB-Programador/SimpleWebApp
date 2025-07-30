@@ -2,30 +2,30 @@ package com.eduardo.model.util;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.eduardo.model.Item;
-import com.eduardo.model.User;
+import com.eduardo.model.SimpleItem;
+import com.eduardo.model.SimpleUser;
 
 public final class ModelMethods {
 
-	public static final User createUser(HttpServletRequest request) {
+	public static final SimpleUser createSimpleUser(HttpServletRequest request) {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		return new User(email, password);
+		return new SimpleUser(email, password);
 	}
 	
-	public static final Item createItem(HttpServletRequest request) {
+	public static final SimpleItem createSimpleItem(HttpServletRequest request) {
 		String name = request.getParameter("name");
-		double value = Double.parseDouble("value");
+		double value = Double.parseDouble(request.getParameter("value"));
 		
-		return new Item(name, value);
+		return new SimpleItem(name, value);
 	}
 	
-	public static final void addItemToUser(User user, Item item) {
-		user.addItem(item);
+	public static final void addSimpleItemToSimpleUser(SimpleUser SimpleUser, SimpleItem SimpleItem) {
+		SimpleUser.addItem(SimpleItem);
 	}
 	
-	public static final void removeItemFromUser(User user, Item item) {
-		user.removeItem(item);
+	public static final void removeSimpleItemFromSimpleUser(SimpleUser SimpleUser, SimpleItem SimpleItem) {
+		SimpleUser.removeItem(SimpleItem);
 	}
 }

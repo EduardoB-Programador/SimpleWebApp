@@ -2,43 +2,33 @@ package com.eduardo.servlet;
 
 import static com.eduardo.model.util.ModelMethods.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.eduardo.model.User;
+import com.eduardo.model.SimpleUser;
 import com.eduardo.repository.Repository;
-import com.eduardo.repository.util.RepositoryMethods;
+import static com.eduardo.repository.util.RepositoryMethods.*;
 
 public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
-		User u = new User("user@gmail.com", "aaaa");
+		Repository<SimpleUser> repo = getRepository(request, getServletContext());
+		
 		try {
-			Map<String, Object> map = u.toMap();
-			System.out.println(map);
-			System.out.println(u.getTableName());
-			System.out.println(u.getTableColumns());
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			SimpleUser u = createSimpleUser(request);
+			System.out.println("passou da criação de usuário");
+			
+			repo.add(u);
+		} catch (RuntimeException e) {e.printStackTrace();}
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			Repository<User> repo = RepositoryMethods.getRepository(request, getServletContext());
-		} catch (Exception e) {System.out.println(e);}
 		
-		
-		try {
-			
-		} catch (RuntimeException e) {
-			
-		}
 	}
 }

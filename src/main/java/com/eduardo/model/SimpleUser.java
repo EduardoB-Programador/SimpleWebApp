@@ -8,19 +8,31 @@ import java.util.Objects;
 import com.eduardo.model.util.Mappifier;
 import com.eduardo.model.util.Table;
 
-public final class User implements Mappifier, Table {
+public final class SimpleUser implements Mappifier, Table {
+	@SuppressWarnings("unused")
+	private int id;
 	private Password password;
 	private Email email;
-	private List<Item> items;
+	private List<SimpleItem> items;
 	
-	public User(Email email, Password password) {
+	public SimpleUser(Email email, Password password) {
+		this(-1, email, password);
+	}
+	
+	public SimpleUser(String email, String password) {
+		this(-1, new Email(email), new Password(password));
+	}
+	
+	public SimpleUser(int id, String email, String password) {
+		this(id, new Email(email), new Password(password));
+	}
+	
+	public SimpleUser(int id, Email email, Password password) {
+		if (id >= 0)
+			this.id = id;
 		this.email = email;
 		this.password = password;
 		this.items = new ArrayList<>();
-	}
-	
-	public User(String email, String password) {
-		this(new Email(email), new Password(password));
 	}
 
 	@Override
@@ -45,19 +57,19 @@ public final class User implements Mappifier, Table {
 		return email;
 	}
 
-	public List<Item> getItems() {
+	public List<SimpleItem> getItems() {
 		return items;
 	}
 	
-	public void addItem(Item item) {
+	public void addItem(SimpleItem item) {
 		items.add(item);
 	}
 	
-	public void removeItem(Item item) {
+	public void removeItem(SimpleItem item) {
 		items.remove(item);
 	}
 	
-	public void setList(List<Item> items) {
+	public void setList(List<SimpleItem> items) {
 		this.items = items;
 	}
 	
@@ -75,9 +87,9 @@ public final class User implements Mappifier, Table {
 		Email e = (Email) (new Email("example@gmail.com")).fromMap(tempMap);
 		
 		tempMap = Map.of("items", map.get("items"));
-		List<Item> items = (List<Item>) (new Item("", 0)).fromMap(tempMap);
+		List<SimpleItem> items = (List<SimpleItem>) (new SimpleItem("", 0, 0)).fromMap(tempMap);
 		
-		User u = new User(e, p); u.setList(items);
+		SimpleUser u = new SimpleUser(e, p); u.setList(items);
 		return u;
 	}
 }
