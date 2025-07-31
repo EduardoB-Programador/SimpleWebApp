@@ -8,12 +8,12 @@ import java.util.Map.Entry;
 
 public interface Mappifier {
 	
-	public default Map<String, Object> toMap() throws IllegalArgumentException, IllegalAccessException {
+	public default Map<String, Object> toMap() {
 		return toMap(this);
 	}
 
 	@SuppressWarnings("unchecked")
-	public static Map<String, Object> toMap(Object o) throws IllegalArgumentException, IllegalAccessException {
+	public static Map<String, Object> toMap(Object o) {
 		Field[] fields = o.getClass().getDeclaredFields();
 		List<Entry<String, Object>> list = new ArrayList<>();
 		
@@ -30,11 +30,13 @@ public interface Mappifier {
 		return Map.ofEntries(entries);
 	}
 	
-	private static Entry<String, Object> createEntry(Field f, Object o) throws IllegalArgumentException, IllegalAccessException {
+	private static Entry<String, Object> createEntry(Field f, Object o){
 		f.setAccessible(true);
 		String name = f.getName();
-		Object obj = f.get(o);
-		
+		Object obj;
+		try {
+			obj = f.get(o);
+		} catch (IllegalArgumentException | IllegalAccessException e) {return null;}
 		return Map.entry(name, obj);
 	}
 	

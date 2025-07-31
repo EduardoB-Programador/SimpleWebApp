@@ -8,3 +8,16 @@ html {
 	background: #ffffff;
 	color: #000000;
 }
+
+h1 {
+	font-family: monospace;
+}
+
+a:link, a:visited {
+	text-decoration: underline;
+	color: black;
+}
+
+a:hover {
+	color: blue;
+}

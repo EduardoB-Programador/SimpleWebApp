@@ -6,33 +6,20 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.eduardo.model.util.Mappifier;
-import com.eduardo.model.util.Table;
 
-public final class SimpleUser implements Mappifier, Table {
-	@SuppressWarnings("unused")
-	private int id;
+public final class SimpleUser implements Mappifier {
 	private Password password;
 	private Email email;
 	private List<SimpleItem> items;
 	
 	public SimpleUser(Email email, Password password) {
-		this(-1, email, password);
-	}
-	
-	public SimpleUser(String email, String password) {
-		this(-1, new Email(email), new Password(password));
-	}
-	
-	public SimpleUser(int id, String email, String password) {
-		this(id, new Email(email), new Password(password));
-	}
-	
-	public SimpleUser(int id, Email email, Password password) {
-		if (id >= 0)
-			this.id = id;
 		this.email = email;
 		this.password = password;
 		this.items = new ArrayList<>();
+	}
+	
+	public SimpleUser(String email, String password) {
+		this(new Email(email), new Password(password));
 	}
 
 	@Override
@@ -87,7 +74,7 @@ public final class SimpleUser implements Mappifier, Table {
 		Email e = (Email) (new Email("example@gmail.com")).fromMap(tempMap);
 		
 		tempMap = Map.of("items", map.get("items"));
-		List<SimpleItem> items = (List<SimpleItem>) (new SimpleItem("", 0, 0)).fromMap(tempMap);
+		List<SimpleItem> items = (List<SimpleItem>) (new SimpleItem("", 0)).fromMap(tempMap);
 		
 		SimpleUser u = new SimpleUser(e, p); u.setList(items);
 		return u;

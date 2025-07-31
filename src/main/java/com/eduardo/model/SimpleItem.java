@@ -7,31 +7,17 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.eduardo.model.util.Mappifier;
-import com.eduardo.model.util.Table;
 
-public final class SimpleItem implements Mappifier, Table {
-	@SuppressWarnings("unused")
-	private int id;
-	
+public final class SimpleItem implements Mappifier {
 	private String name;
 	private double value;
 	
-	@SuppressWarnings("unused")
-	private int userId;
-	
-	public SimpleItem(String name, double value, int userId) {
-		this(-1, name, value, userId);
-	}
-	
-	public SimpleItem(int id, String name, double value, int userId) {
+	public SimpleItem(String name, double value) {
 		isNull(name);
 		isNull(value);
-		isNull(userId);
-		if (id >= 0)
-			this.id = id;
+		
 		this.name = name;
 		this.value = value;
-		this.userId = userId;
 	}
 
 	@Override

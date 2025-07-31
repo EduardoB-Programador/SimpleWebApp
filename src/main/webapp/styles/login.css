@@ -27,12 +27,3 @@
 #operation-title {
 	text-align: center;
 }
-
-#log-sign-in:link, #log-sign-in:visited {
-	text-decoration: underline;
-	color: black;
-}
-
-#log-sign-in:hover {
-	color: blue;
-}
