@@ -3,7 +3,7 @@
 	background: #bfbfbf;
 	position: relative;
 	left: 0;
-	display: block;
+	display: inline-block;
 	width: 50%;
 	min-height: 200px;
 	max-height: 400px;
@@ -19,4 +19,27 @@
 	height: 50px;
 	background: #9f9f9f;
 	margin: 0 0 7px;
+}
+
+.item > .item-attribute {
+	text-align: left;
+	left: 0;
+	position: relative;
+	height: inherit;
+	max-width: 10%;
+	margin: 0 3% 0 0;
+}
+
+.item > form {
+	right:0;
+	
+}
+
+#put-items {
+	display: inline-block;
+	right: 0;
+	background: #bfbfbf;
+	position: relative;
+	padding: 2%;
+	width: 30%;
 }

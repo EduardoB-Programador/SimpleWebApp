@@ -7,23 +7,6 @@
 	position: relative;
 }
 
-.inputs {
-	border-radius: 5px;
-	border: none;
-	width: 100%;
-	font-size: 15px;
-	background: #bebebe;
-	margin: 0 0 8px;
-}
-
-#submit {
-	margin: 8px 0;
-	border-radius: 5px;
-	border: none;
-	width: 100%;
-	background: #beffff;
-}
-
 #operation-title {
 	text-align: center;
 }

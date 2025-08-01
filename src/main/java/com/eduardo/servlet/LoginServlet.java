@@ -17,35 +17,19 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		RuntimeDB db = RuntimeDB.getInstance();
-		
-		try {
-			SimpleUser user = createSimpleUser(request);
-			db.addUser(user);
-		} catch (Exception e) {
-			request.getSession().setAttribute("message", "<p color=\"red\">Invalid email credentials.</p>");
-			response.sendRedirect("./signin.jsp");
-			return ;
-		}
+		SimpleUser user = createSimpleUser(request);
+		db.addUser(user);
 
 		response.sendRedirect("./login.jsp");
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RuntimeDB db = RuntimeDB.getInstance();
-		SimpleUser user;
-		try {
-			user = createSimpleUser(request);
-		} catch (RuntimeException e) {
-			request.getSession().setAttribute("message", "<p color=\"red\">Incorrect credentials, check if the password or email are correct.</p>");
-			response.sendRedirect("./login.jsp");
-			return ;
-		}
+		SimpleUser user = createSimpleUser(request);
 		
 		if (db.userExists(user) >= 0) {
-			request.setAttribute("email", user.getEmail().toString());
-			request.setAttribute("password", user.getPassword().toString());
-			request.setAttribute("items", user.getItems());
-			request.getRequestDispatcher("./home.jsp").forward(request, response);
+			request.getSession().setAttribute("currentUser", user);
+			response.sendRedirect("./home.jsp");
 			return ;
 		}
 		

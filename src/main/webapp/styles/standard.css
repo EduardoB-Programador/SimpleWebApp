@@ -9,6 +9,23 @@ html {
 	color: #000000;
 }
 
+.inputs {
+	border-radius: 5px;
+	border: none;
+	width: 100%;
+	font-size: 15px;
+	background: #bebebe;
+	margin: 0 0 8px;
+}
+
+.submit, #submit {
+	margin: 8px 0;
+	border-radius: 5px;
+	border: none;
+	width: 100%;
+	background: #beffff;
+}
+
 h1 {
 	font-family: monospace;
 }

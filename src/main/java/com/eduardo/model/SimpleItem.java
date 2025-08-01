@@ -55,4 +55,8 @@ public final class SimpleItem implements Mappifier {
 			return (List<SimpleItem>) map.get("Items");
 		return (SimpleItem) map.get("item");
 	}
+	
+	public String toString() {
+		return this.toMap().toString();
+	}
 }

@@ -19,6 +19,16 @@
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>itemManager</servlet-name>
+		<servlet-class>com.eduardo.servlet.ItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>itemManager</servlet-name>
+		<url-pattern>/item</url-pattern>
+	</servlet-mapping>
+	
+	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/error.jsp</location>

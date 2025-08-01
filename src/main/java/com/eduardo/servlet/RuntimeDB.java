@@ -17,22 +17,34 @@ public class RuntimeDB {
 		return db;
 	}
 	
+	public SimpleUser getUserReference(SimpleUser user) {
+		int index;
+		if (user != null && (index = userExists(user)) >= 0)
+			return users.get(index);
+		return null;
+	}
+	
 	public void addUser(SimpleUser user) {
-		if (user != null)
+		if (user != null && userExists(user) == -1)
 			users.add(user);
+		users.stream().forEach((u) -> System.out.println(u.toMap()));
 	}
 	
 	public void addItem(SimpleUser user, SimpleItem item) {
 		int index;
 		if ((index = userExists(user)) >= 0 && itemExists(user, item) == -1) {
+			users.stream().forEach((u) -> System.out.println(u.toMap()));
 			users.get(index).addItem(item);
+			user.addItem(item);
 		}
 	}
 	
 	public void removeItem(SimpleUser user, SimpleItem item) {
 		int index;
 		if ((index = userExists(user)) >= 0 && itemExists(user, item) >= 0) {
+			users.stream().forEach((u) -> System.out.println(u.toMap()));
 			users.get(index).removeItem(item);
+			user.removeItem(item);
 		}
 	}
 	
