@@ -30,31 +30,23 @@ public class RuntimeDB {
 		users.stream().forEach((u) -> System.out.println(u.toMap()));
 	}
 	
-	public void addItem(SimpleUser user, SimpleItem item) {
-		int index;
-		if ((index = userExists(user)) >= 0 && itemExists(user, item) == -1) {
+	public SimpleUser addItem(SimpleUser user, SimpleItem item) {
+		if (userExists(user) >= 0 && itemExists(user, item) == -1) {
 			users.stream().forEach((u) -> System.out.println(u.toMap()));
-			users.get(index).addItem(item);
+			user = getUserReference(user);
 			user.addItem(item);
 		}
+		return user;
 	}
 	
-	public void removeItem(SimpleUser user, SimpleItem item) {
-		int index;
-		if ((index = userExists(user)) >= 0 && itemExists(user, item) >= 0) {
+	public SimpleUser removeItem(SimpleUser user, SimpleItem item) {
+		if (userExists(user) >= 0 && itemExists(user, item) >= 0) {
 			users.stream().forEach((u) -> System.out.println(u.toMap()));
-			users.get(index).removeItem(item);
+			user = getUserReference(user);
 			user.removeItem(item);
 		}
-	}
-	
-	public void updateItem(SimpleUser user, SimpleItem oldItem, SimpleItem newItem) {
-		int index;
-		if ((index = userExists(user)) >= 0 && itemExists(user, oldItem) >= 0) {
-			SimpleUser u = users.get(index);
-			u.removeItem(oldItem);
-			u.addItem(newItem);
-		}
+		
+		return user;
 	}
 	
 	/**

@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 		SimpleUser user = createSimpleUser(request);
 		
 		if (db.userExists(user) >= 0) {
+			user = db.getUserReference(user);
 			request.getSession().setAttribute("currentUser", user);
 			response.sendRedirect("./home.jsp");
 			return ;

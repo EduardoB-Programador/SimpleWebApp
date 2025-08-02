@@ -16,30 +16,31 @@
 	max-width: 100%;
 	padding: 10px;
 	display: block;
-	height: 50px;
+	height: 75px;
 	background: #9f9f9f;
 	margin: 0 0 7px;
 }
 
-.item > .item-attribute {
+.item-attribute {
 	text-align: left;
 	left: 0;
 	position: relative;
 	height: inherit;
-	max-width: 10%;
-	margin: 0 3% 0 0;
+	width: auto;
+	display: inline-block;
 }
 
-.item > form {
+.delete-form {
+	position: relative;
+	width: inherit;
 	right:0;
-	
 }
 
 #put-items {
 	display: inline-block;
 	right: 0;
 	background: #bfbfbf;
-	position: relative;
+	position: absolute;
 	padding: 2%;
 	width: 30%;
 }

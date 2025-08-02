@@ -15,15 +15,12 @@ public class ItemServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		SimpleItem item = createSimpleItem(request);
 		SimpleUser user = (SimpleUser) request.getSession().getAttribute("currentUser");
 		
-		System.out.println(item.toMap());
-		System.out.println(user.toMap());
-		
 		RuntimeDB db = RuntimeDB.getInstance();
-		db.removeItem(user, item);
+		user = db.removeItem(user, item);
 		
 		System.out.println(user.toMap());
 		
@@ -35,11 +32,8 @@ public class ItemServlet extends HttpServlet {
 		SimpleItem item = createSimpleItem(request);
 		SimpleUser user = (SimpleUser) request.getSession().getAttribute("currentUser");
 		
-		System.out.println(item.toMap());
-		System.out.println(user.toMap());
-		
 		RuntimeDB db = RuntimeDB.getInstance();
-		db.addItem(user, item);
+		user = db.addItem(user, item);
 		
 		System.out.println(user.toMap());
 		

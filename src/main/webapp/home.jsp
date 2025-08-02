@@ -5,7 +5,6 @@
 <%@page import = "static com.eduardo.model.util.ModelMethods.*" %>
 <%@page import = "com.eduardo.model.SimpleUser" %>
 <%@page import = "com.eduardo.servlet.RuntimeDB" %>
-<%@page import="java.util.Iterator"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,10 +23,11 @@
 		<div class="box">
 			<c:forEach items="${items}" var="item">
 				<div class="item">
-					<div class="item-attribute">${item.name}</div>
-					<div class="item-attribute">${item.value}</div>
-					<form action="itemManager" method="DELETE">
-						<input type="submit" class="submit" value="Delete" name="${item}" />
+					<form class="delete-form" action="./item" method="get">
+						<div class="item-attribute">${item.name} : ${item.value}</div>
+						<input type="text" style="display:None;" value="${item.name}" class="inputs" name="name"/>
+						<input type="text" style="display:None;" value="${item.value}" class="inputs" name="value"/>
+						<input type="submit" class="submit" value="Delete" name="item"/>
 					</form>
 				</div>
 			</c:forEach>
